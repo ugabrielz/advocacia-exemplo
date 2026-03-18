@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escritório de Advocacia</title>
+<meta name="description" content="Escritório de Advocacia com atuação estratégica, equipe multidisciplinar e atendimento jurídico personalizado para empresas e famílias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --bg-2:#f5f6f8;
+  --panel:#ffffff;
+  --card:#f5f6f8;
+  --line:#e5e7eb;
+  --gold:#4a5d73;
+  --gold-2:#5a6b80;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+  --radius:24px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{width:min(92%,1180px);margin:auto;max-width:100%}
+
+.topbar{
+  border-bottom:1px solid rgba(255,255,255,.06);
+  color:var(--muted);
+  font-size:.92rem;
+  background:rgba(255,255,255,.015);
+}
+.topbar-wrap{
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.topbar-info{display:flex;gap:18px;flex-wrap:wrap}
+.topbar-social{display:flex;gap:14px}
+.topbar-social a{color:var(--gold-2)}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  backdrop-filter:blur(10px);
+  background:#ffffff;
+  border-bottom:1px solid #e5e7eb;
+  transition:transform .35s ease;
+}
+header.hide{
+  transform:translateY(-100%);
+}
+.nav{
+  min-height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.logo-wrap{display:flex;flex-direction:column;gap:4px}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.45rem;
+  letter-spacing:.2px;
+}
+.logo-sub{
+  color:var(--gold-2);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.74rem;
+}
+.nav-links{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.nav-links a{color:#374151;transition:.25s;font-size:.96rem}
+.nav-links a:hover{color:#111827}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  padding:0 26px;
+  border-radius:999px;
+  font-weight:700;
+  transition:.25s ease;
+  border:1px solid transparent;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--gold),var(--gold-2));
+  color:#ffffff !important;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-outline{
+  border-color:rgba(227,198,143,.22);
+  color:var(--gold-2);
+  background:rgba(255,255,255,.02);
+}
+.btn-outline:hover{background:rgba(255,255,255,.05)}
+
+.hero{padding:92px 0 74px}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:34px;
+  align-items:center;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 16px;
+  border-radius:999px;
+  border:1px solid rgba(227,198,143,.18);
+  background:rgba(255,255,255,.03);
+  color:var(--gold-2);
+  margin-bottom:22px;
+  font-size:.9rem;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,4.7vw,4.7rem);
+  line-height:1.04;
+  max-width:11.5ch;
+  margin-bottom:18px;
+}
+.hero p{
+  color:var(--muted);
+  max-width:60ch;
+  font-size:1.04rem;
+  margin-bottom:30px;
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.hero-metrics{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.metric{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+.metric strong{display:block;color:var(--gold-2);font-size:1.08rem;margin-bottom:4px}
+.metric span{color:var(--muted);font-size:.92rem}
+
+.hero-panel{
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:28px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.hero-panel::before{content:none;}
+.panel-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  color:var(--gold-2);
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(227,198,143,.18);
+  margin-bottom:18px;
+  font-size:.82rem;
+}
+.hero-panel h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.9rem;
+  line-height:1.2;
+  margin-bottom:12px;
+  color:#ffffff;
+}
+.hero-panel p{
+  color:#ffffff;
+  margin-bottom:22px;
+}
+.panel-grid{display:grid;gap:14px}
+.panel-card{
+  padding:16px 18px;
+  border-radius:18px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+}
+.panel-card strong{display:block;margin-bottom:4px;color:#ffffff}
+.panel-card span{color:#ffffff;font-size:.94rem}
+
+section{padding:84px 0}
+.section-head{
+  text-align:center;
+  max-width:790px;
+  margin:0 auto 50px;
+}
+.eyebrow{
+  color:var(--gold-2);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.78rem;
+  font-weight:700;
+  display:block;
+  margin-bottom:10px;
+}
+.section-head h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,3.8vw,3.1rem);
+  margin-bottom:12px;
+}
+.section-head p{color:var(--muted)}
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:18px;
+}
+.service-card,.feature-card,.team-card,.client-card,.contact-card,.media-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:26px;
+  box-shadow:var(--shadow);
+}
+.service-card .num{
+  display:inline-flex;
+  width:40px;height:40px;
+  align-items:center;justify-content:center;
+  border-radius:50%;
+  background:rgba(199,165,106,.12);
+  color:var(--gold-2);
+  font-weight:700;
+  margin-bottom:16px;
+}
+.service-card h3,.feature-card h3,.team-card h3,.contact-card h3,.media-card h3{font-size:1.06rem;margin-bottom:10px}
+.service-card p,.feature-card p,.team-card p,.client-card p,.contact-card p,.media-card p,.about-content p{color:var(--muted)}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:.95fr 1.05fr;
+  gap:28px;
+  align-items:stretch;
+}
+.about-visual{
+  min-height:380px;
+  border-radius:30px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  background:
+    linear-gradient(180deg, rgba(15,17,21,.35), rgba(15,17,21,.94)),
+    linear-gradient(135deg, #26303d, #161b24 50%, #221d18);
+  padding:30px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.about-quote{
+  font-family:'Playfair Display',serif;
+  font-size:1.55rem;
+  line-height:1.25;
+  max-width:16ch;
+  margin-bottom:14px;
+}
+.about-small{color:var(--muted);max-width:42ch}
+.about-content{display:flex;flex-direction:column;justify-content:center}
+.about-content h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,3.8vw,3rem);
+  margin-bottom:16px;
+}
+.about-points{display:grid;gap:14px;margin-top:22px}
+.about-point{
+  padding:18px 20px;
+  border-radius:18px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+}
+.about-point strong{display:block;color:var(--gold-2);margin-bottom:6px}
+
+.features{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.team-avatar{
+  width:74px;height:74px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg, rgba(199,165,106,.22), rgba(255,255,255,.04));
+  color:var(--gold-2);font-weight:700;font-size:1.1rem;
+  margin-bottom:16px;
+}
+.team-role{color:var(--gold-2);font-size:.9rem;margin-bottom:6px}
+
+.media-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.media-card{min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;background:
+  linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.04));}
+.media-badge{
+  display:inline-flex;width:max-content;padding:8px 12px;border-radius:999px;
+  font-size:.78rem;color:var(--gold-2);border:1px solid rgba(227,198,143,.18);
+  margin-bottom:16px;background:rgba(255,255,255,.02)
+}
+
+.clients{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+}
+.client-card{display:flex;align-items:center;justify-content:center;min-height:110px;font-weight:700;color:var(--muted)}
+
+.cta-band{
+  background:linear-gradient(135deg, rgba(199,165,106,.12), rgba(255,255,255,.03));
+  border:1px solid rgba(227,198,143,.16);
+  border-radius:30px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.cta-band h3{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:8px}
+.cta-band p{color:var(--muted);max-width:58ch}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:.92fr 1.08fr;
+  gap:22px;
+}
+.contact-list{display:grid;gap:12px;margin-top:16px}
+.contact-list div{
+  padding:14px 16px;
+  border-radius:16px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  color:var(--muted);
+}
+.form{display:grid;gap:14px}
+.form input,.form textarea,.form select{
+  width:100%;
+  padding:15px 16px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  font:inherit;
+  outline:none;
+}
+.form textarea{min-height:150px;resize:vertical}
+
+footer{
+  padding:30px 0 42px;
+  border-top:1px solid rgba(255,255,255,.06);
+  color:var(--muted);
+}
+.footer-wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+
+.whatsapp{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:62px;height:62px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#25D366,#1ebe5c);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;
+  box-shadow:0 16px 35px rgba(37,211,102,.28);
+  z-index:1200;
+}
+.whatsapp svg{width:28px;height:28px;fill:currentColor}
+
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease, transform .8s ease}
+.reveal.show{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-38px);transition:opacity .8s ease, transform .8s ease}
+.reveal-left.show{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(38px);transition:opacity .8s ease, transform .8s ease}
+.reveal-right.show{opacity:1;transform:none}
+.delay-1{transition-delay:.08s}
+.delay-2{transition-delay:.16s}
+.delay-3{transition-delay:.24s}
+.delay-4{transition-delay:.32s}
+.delay-5{transition-delay:.40s}
+
+@media (max-width:1120px){
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .services{grid-template-columns:repeat(3,1fr)}
+  .features,.team,.clients{grid-template-columns:repeat(2,1fr)}
+  .media-grid{grid-template-columns:1fr 1fr}
+  .hero h1{max-width:100%}
+}
+@media (max-width:760px){
+  *{max-width:100%;}
+  .topbar,.topbar-wrap,.topbar-info,.topbar-social,.nav,.nav-links,.hero-grid,.hero-actions,.hero-metrics,.services,.about-grid,.features,.team,.media-grid,.clients,.cta-band,.contact-grid,.footer-wrap{min-width:0;}
+  .topbar-info{justify-content:center}
+  .hero h1,.hero p,.section-head h2,.section-head p,.about-quote,.about-small,.cta-band p,.contact-card p{overflow-wrap:anywhere;word-break:break-word}
+  .service-card,.feature-card,.team-card,.client-card,.contact-card,.media-card,.metric,.panel-card,.about-point{min-width:0;}
+  .topbar-wrap{padding-inline:0}
+  .nav-links{width:100%;justify-content:center}
+  .hero-panel,.service-card,.feature-card,.team-card,.client-card,.contact-card,.media-card,.metric,.about-point,.panel-card,.cta-band{padding-left:20px;padding-right:20px}
+  .hero-panel,.about-visual,.cta-band{overflow:hidden}
+  .contact-list div{overflow-wrap:anywhere}
+
+  .topbar-wrap,.nav{justify-content:center;text-align:center}
+  .nav-links a:not(.btn){display:none}
+  .hero,section{padding:64px 0}
+  .hero-actions{flex-direction:column}
+  .btn{width:100%}
+  .hero-metrics,.services,.features,.team,.media-grid,.clients{grid-template-columns:1fr}
+  .cta-band{flex-direction:column;align-items:flex-start}
+  .about-visual{min-height:280px}
+  .whatsapp{width:58px;height:58px;right:14px;bottom:14px}
+
+  .reveal,
+  .reveal-left,
+  .reveal-right{
+    opacity:0;
+    transform:translateY(26px);
+    transition:opacity .75s ease, transform .75s ease;
+  }
+
+  .reveal.show,
+  .reveal-left.show,
+  .reveal-right.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal,.reveal-left,.reveal-right{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container topbar-wrap">
+    <div class="topbar-info">
+      <span>Seg - Sáb / 8h às 18h</span>
+      <span>Rua Exemplo, 90 — São José do Rio Preto/SP</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="container nav">
+    <div class="logo-wrap">
+      <div class="logo">Escritório de Advocacia</div>
+      <div class="logo-sub">Atuação estratégica e personalizada</div>
+    </div>
+    <nav class="nav-links">
+      <a href="#sobre">O Escritório</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#contato" class="btn btn-primary">Quero entrar em contato</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="reveal-left">
+        <div class="badge">Uma equipe comprometida com seu resultado</div>
+        <h1>Soluções jurídicas seguras, estratégicas e humanas.</h1>
+        <p>Com formação sólida, experiência prática e atuação estratégica, o Escritório de Advocacia trabalha lado a lado com seus clientes para entregar soluções jurídicas eficientes, com atenção real ao que importa: proteção, crescimento e segurança patrimonial.</p>
+        <div class="hero-actions">
+          <a href="#contato" class="btn btn-primary">Agendar atendimento</a>
+          <a href="#servicos" class="btn btn-outline">Conhecer serviços</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric reveal delay-1">
+            <strong>Atuação estratégica</strong>
+            <span>para empresas e famílias</span>
+          </div>
+          <div class="metric reveal delay-2">
+            <strong>Equipe multidisciplinar</strong>
+            <span>com suporte integrado</span>
+          </div>
+          <div class="metric reveal delay-3">
+            <strong>Atendimento personalizado</strong>
+            <span>com foco em resultado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-panel reveal-right">
+        <div class="panel-tag">Baseado em um modelo de escritório premium</div>
+        <h3>Estrutura pensada para transmitir autoridade desde o primeiro acesso</h3>
+        <p>Essa landing foi montada com a mesma linha do site de referência: apresentação forte do escritório, foco em especialidades, destaque para a equipe, área de mídia, clientes e contato direto.</p>
+        <div class="panel-grid">
+          <div class="panel-card">
+            <strong>Posicionamento institucional</strong>
+            <span>Visual premium, sóbrio e profissional para reforçar credibilidade.</span>
+          </div>
+          <div class="panel-card">
+            <strong>Hierarquia clara de conteúdo</strong>
+            <span>O visitante entende rapidamente quem é o escritório, o que ele faz e como entrar em contato.</span>
+          </div>
+          <div class="panel-card">
+            <strong>Conversão com elegância</strong>
+            <span>Chamadas para ação distribuídas sem deixar a página carregada ou amadora.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Somos especialistas em</span>
+        <h2>Áreas estratégicas para proteger, estruturar e impulsionar patrimônios e negócios</h2>
+        <p>A apresentação abaixo segue a lógica do site de referência, destacando especialidades de maior percepção de valor e apelo institucional.</p>
+      </div>
+
+      <div class="services">
+        <article class="service-card reveal delay-1">
+          <div class="num">01</div>
+          <h3>Direito Tributário Estratégico</h3>
+          <p>Planejamento, mitigação de carga fiscal, recuperação de créditos e prevenção de riscos tributários.</p>
+        </article>
+        <article class="service-card reveal delay-2">
+          <div class="num">02</div>
+          <h3>Estruturação Societária</h3>
+          <p>Modelagem societária, reorganizações, governança e soluções para crescimento empresarial.</p>
+        </article>
+        <article class="service-card reveal delay-3">
+          <div class="num">03</div>
+          <h3>Planejamento Patrimonial</h3>
+          <p>Proteção de patrimônio, holdings, acordos familiares e organização sucessória.</p>
+        </article>
+        <article class="service-card reveal delay-4">
+          <div class="num">04</div>
+          <h3>Consultoria Internacional</h3>
+          <p>Atuação consultiva para ativos no exterior, conformidade e estruturação internacional.</p>
+        </article>
+        <article class="service-card reveal delay-5">
+          <div class="num">05</div>
+          <h3>Contencioso Estratégico</h3>
+          <p>Atuação administrativa e judicial com embasamento técnico e condução assertiva.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="container about-grid">
+      <div class="about-visual reveal-left">
+        <div class="about-quote">Uma advocacia que alia técnica, proximidade e visão estratégica.</div>
+        <div class="about-small">O objetivo aqui é apresentar o escritório com a mesma percepção do site de referência: equipe sólida, gestão humanizada e atuação jurídica segura.</div>
+      </div>
+      <div class="about-content reveal-right">
+        <h2>O Escritório</h2>
+        <p>O Escritório de Advocacia foi pensado para atender clientes que valorizam clareza, planejamento e acompanhamento próximo. A proposta é combinar atendimento humano com atuação técnica de alto nível, criando soluções personalizadas para cada cenário jurídico.</p>
+        <div class="about-points">
+          <div class="about-point">
+            <strong>Quem somos</strong>
+            Um escritório com postura institucional forte, focado em construir segurança e confiança em cada atendimento.
+          </div>
+          <div class="about-point">
+            <strong>Gestão humanizada</strong>
+            A relação com o cliente é tratada com seriedade, proximidade e comunicação clara durante todo o processo.
+          </div>
+          <div class="about-point">
+            <strong>Atuação estratégica</strong>
+            Cada caso recebe análise individualizada para definição do melhor caminho jurídico e patrimonial.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Diferenciais</span>
+        <h2>O que fortalece a imagem do escritório</h2>
+        <p>Esses blocos ajudam a transmitir o mesmo posicionamento premium e corporativo que aparece no site usado como base.</p>
+      </div>
+
+      <div class="features">
+        <article class="feature-card reveal delay-1">
+          <h3>Atendimento consultivo</h3>
+          <p>Mais do que responder demandas, o escritório orienta decisões com visão estratégica.</p>
+        </article>
+        <article class="feature-card reveal delay-2">
+          <h3>Estrutura profissional</h3>
+          <p>Uma apresentação visual forte gera confiança e percepção imediata de autoridade.</p>
+        </article>
+        <article class="feature-card reveal delay-3">
+          <h3>Comunicação objetiva</h3>
+          <p>Textos claros e bem hierarquizados tornam a experiência mais agradável e profissional.</p>
+        </article>
+        <article class="feature-card reveal delay-4">
+          <h3>Captação elegante</h3>
+          <p>Botões e chamadas para ação aparecem na medida certa, sem poluir a página.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="equipe">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Nossa equipe</span>
+        <h2>Profissionais prontos para receber cada cliente com técnica e atenção</h2>
+        <p>Assim como no site de referência, a equipe aparece como parte importante da confiança e da credibilidade transmitidas pela página.</p>
+      </div>
+
+      <div class="team">
+        <article class="team-card reveal delay-1">
+          <div class="team-avatar">EA</div>
+          <div class="team-role">Sócio fundador</div>
+          <h3>Nome do Advogado</h3>
+          <p>Especialista na condução estratégica dos principais casos e no relacionamento institucional do escritório.</p>
+        </article>
+        <article class="team-card reveal delay-2">
+          <div class="team-avatar">GP</div>
+          <div class="team-role">Gestão de pessoas</div>
+          <h3>Nome da Profissional</h3>
+          <p>Responsável por processos internos, cultura organizacional e experiência humanizada no atendimento.</p>
+        </article>
+        <article class="team-card reveal delay-3">
+          <div class="team-avatar">GT</div>
+          <div class="team-role">Gestão de tecnologia</div>
+          <h3>Nome do Gestor</h3>
+          <p>Atua no suporte à operação, inovação e organização dos fluxos que tornam o escritório mais eficiente.</p>
+        </article>
+        <article class="team-card reveal delay-4">
+          <div class="team-avatar">AC</div>
+          <div class="team-role">Advogado parceiro</div>
+          <h3>Nome do Profissional</h3>
+          <p>Contribui tecnicamente em demandas específicas, ampliando a capacidade de atuação do escritório.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">A gente na mídia</span>
+        <h2>Espaço para fortalecer reputação e prova de autoridade</h2>
+        <p>Uma seção como essa ajuda a comunicar relevância pública, presença institucional e reconhecimento de mercado.</p>
+      </div>
+
+      <div class="media-grid">
+        <article class="media-card reveal delay-1">
+          <div class="media-badge">Entrevista</div>
+          <h3>Participação em canal ou podcast</h3>
+          <p>Use este bloco para destacar entrevistas, participações e conteúdos em veículos de comunicação.</p>
+        </article>
+        <article class="media-card reveal delay-2">
+          <div class="media-badge">Artigo</div>
+          <h3>Publicação sobre tema jurídico relevante</h3>
+          <p>Excelente para reforçar domínio técnico e posicionamento do escritório em assuntos estratégicos.</p>
+        </article>
+        <article class="media-card reveal delay-3">
+          <div class="media-badge">Mídia</div>
+          <h3>Presença institucional em destaque</h3>
+          <p>Área ideal para prints de matérias, capas de conteúdo ou referências de autoridade do escritório.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Clientes</span>
+        <h2>Espaço para exibir marcas e relações institucionais</h2>
+        <p>No site de referência existe uma área de clientes; aqui ela foi traduzida para uma grade elegante de logos e nomes institucionais.</p>
+      </div>
+
+      <div class="clients">
+        <div class="client-card reveal delay-1">Cliente / Empresa</div>
+        <div class="client-card reveal delay-2">Cliente / Empresa</div>
+        <div class="client-card reveal delay-3">Cliente / Empresa</div>
+        <div class="client-card reveal delay-4">Cliente / Empresa</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta-band reveal">
+        <div>
+          <h3>Quer um atendimento jurídico com visão estratégica?</h3>
+          <p>Use essa chamada para incentivar o visitante a iniciar o contato com o escritório de forma direta, simples e profissional.</p>
+        </div>
+        <a href="#contato" class="btn btn-primary">Falar agora</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="container contact-grid">
+      <div class="contact-card reveal-left">
+        <h3>Fale conosco</h3>
+        <p>Direcione o visitante para o WhatsApp, formulário ou atendimento inicial com os dados principais do escritório.</p>
+        <div class="contact-list">
+          <div><strong>Telefone:</strong> (00) 0000-0000</div>
+          <div><strong>WhatsApp:</strong> (00) 00000-0000</div>
+          <div><strong>E-mail:</strong> contato@escritoriodeadvocacia.com.br</div>
+          <div><strong>Endereço:</strong> Rua Exemplo, 90 — São José do Rio Preto/SP</div>
+          <div><strong>Horário:</strong> Seg - Sáb / 8h às 18h</div>
+        </div>
+      </div>
+
+      <div class="contact-card reveal-right">
+        <h3>Solicite um atendimento</h3>
+        <form class="form">
+          <input type="text" placeholder="Seu nome">
+          <input type="email" placeholder="Seu e-mail">
+          <input type="tel" placeholder="Seu WhatsApp">
+          <select>
+            <option>Selecione o assunto</option>
+            <option>Direito Tributário Estratégico</option>
+            <option>Estruturação Societária</option>
+            <option>Planejamento Patrimonial</option>
+            <option>Consultoria Internacional</option>
+            <option>Contencioso Estratégico</option>
+          </select>
+          <textarea placeholder="Descreva brevemente sua necessidade"></textarea>
+          <button type="submit" class="btn btn-primary">Enviar solicitação</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-wrap">
+    <div>© 2026 Escritório de Advocacia — Todos os direitos reservados.</div>
+    <div>Landing page exemplo com foco institucional e conversão.</div>
+  </div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/5500000000000" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.22c-.27-.14-1.6-.79-1.84-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.18-1.33-.81-.72-1.36-1.6-1.52-1.87-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.52-.45-.45-.61-.45h-.52c-.18 0-.48.07-.73.34s-.95.93-.95 2.27.98 2.64 1.11 2.82c.14.18 1.92 2.93 4.65 4.11.65.28 1.15.45 1.54.57.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.06-.11-.24-.18-.5-.32zM16.05 27h-.01a11 11 0 0 1-5.6-1.53L5 26.91l1.47-5.32A10.94 10.94 0 0 1 5.06 16C5.06 9.95 9.98 5.03 16.04 5.03c2.94 0 5.7 1.14 7.78 3.22A10.9 10.9 0 0 1 27 16c0 6.05-4.92 11-10.95 11zm9.32-20.32A13.08 13.08 0 0 0 16.05 2.8C8.8 2.8 2.9 8.7 2.9 15.96c0 2.32.61 4.58 1.76 6.56L2.8 29.2l6.84-1.79a13.2 13.2 0 0 0 6.4 1.64h.01c7.25 0 13.15-5.9 13.15-13.15 0-3.51-1.37-6.8-3.83-9.22z"/></svg>
+</a>
+
+<script>
+const isMobile = window.matchMedia('(max-width: 760px)').matches;
+const header = document.querySelector('header');
+let lastScroll = window.pageYOffset;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll <= 10) {
+    header.classList.remove('hide');
+    lastScroll = currentScroll;
+    return;
+  }
+
+  if (currentScroll > lastScroll) {
+    header.classList.add('hide');
+  } else {
+    header.classList.remove('hide');
+  }
+
+  lastScroll = currentScroll;
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      if (isMobile) {
+        entry.target.style.transitionDelay = entry.target.dataset.delay || '0s';
+      }
+    }
+  });
+}, {
+  threshold: isMobile ? 0.08 : 0.14,
+  rootMargin: isMobile ? '0px 0px -20px 0px' : '0px 0px -50px 0px'
+});
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el) => {
+  const delayClass = [...el.classList].find(cls => cls.startsWith('delay-'));
+  const delayMap = {
+    'delay-1': '.08s',
+    'delay-2': '.16s',
+    'delay-3': '.24s',
+    'delay-4': '.32s',
+    'delay-5': '.40s'
+  };
+  if (delayClass && isMobile) {
+    el.dataset.delay = delayMap[delayClass] || '0s';
+  }
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
